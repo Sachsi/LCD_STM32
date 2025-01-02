@@ -1,0 +1,43 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "d:/Dokumente/Software/C_Programme/LCD_STM32/include",
+                "d:/Dokumente/Software/C_Programme/LCD_STM32/src",
+                "d:/Dokumente/Software/C_Programme/LCD_STM32/.pio/libdeps/mydebug/Unity/src",
+                "d:/Dokumente/Software/C_Programme/LCD_STM32/lib/LCD",
+                "d:/Dokumente/Software/C_Programme/LCD_STM32/lib/fonts",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "d:/Dokumente/Software/C_Programme/LCD_STM32/include",
+                    "d:/Dokumente/Software/C_Programme/LCD_STM32/src",
+                    "d:/Dokumente/Software/C_Programme/LCD_STM32/.pio/libdeps/mydebug/Unity/src",
+                    "d:/Dokumente/Software/C_Programme/LCD_STM32/lib/LCD",
+                    "d:/Dokumente/Software/C_Programme/LCD_STM32/lib/fonts",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60116",
+                "_UNITY_",
+                "G0",
+                "__PLATFORMIO_BUILD_DEBUG__",
+                ""
+            ],
+            "compilerPath": "C:/msys64/ucrt64/bin/gcc.exe",
+            "compilerArgs": [
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
