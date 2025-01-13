@@ -54,7 +54,7 @@
 #include "lcd.h"
 #include "stdlib.h"
 #include "delay.h"	 
-
+#include "ili9341.h"
 	   
 //->->LCD->Ҫ->->
 //Ĭ->Ϊ->->
@@ -68,8 +68,21 @@ void LCD_write(uint16_t VAL)
 {
 	LCD_CS_CLR;  
 	//DATAOUT(VAL);
+	uint16_t temp = LCD_BIT_MASK_A & VAL;
+	uint8_t count = 0;
+	uint8_t data = 0;
+
 	HAL_GPIO_WritePin(LCD_GPIOA_TYPE, LCD_MASK_A, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(LCD_GPIOB_TYPE, LCD_MASK_B, GPIO_PIN_RESET);
+	temp = LCD_BIT_MASK_C & VAL;
+	for(count = 0; count < sizeof(LCD_PIN); count++ )
+	{
+		if((temp >> count) & 0x1)
+		{
+			data |= 1 << LCD_PIN;
+		}
+		LCD_PIN++;
+	}
 	HAL_GPIO_WritePin(LCD_GPIOC_TYPE, LCD_MASK_C, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(LCD_GPIOA_TYPE, LCD_MASK_A, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(LCD_GPIOB_TYPE, LCD_MASK_B, GPIO_PIN_SET);

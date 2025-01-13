@@ -136,5 +136,8 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
-
+void USART_Send(uint8_t* p_data, size_t size)
+{
+ HAL_UART_Transmit(&huart2, p_data , size ,10 );   
+}
 /* USER CODE END 1 */

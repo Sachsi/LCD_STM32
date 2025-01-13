@@ -1,21 +1,21 @@
 /* USER CODE BEGIN Header */
 /**
- ******************************************************************************
- * @file           : main.h
- * @brief          : Header for main.c file.
- *                   This file contains the common defines of the application.
- ******************************************************************************
- * @attention
- *
- * Copyright (c) 2024 STMicroelectronics.
- * All rights reserved.
- *
- * This software is licensed under terms that can be found in the LICENSE file
- * in the root directory of this software component.
- * If no LICENSE file comes with this software, it is provided AS-IS.
- *
- ******************************************************************************
- */
+  ******************************************************************************
+  * @file           : main.h
+  * @brief          : Header for main.c file.
+  *                   This file contains the common defines of the application.
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2024 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -23,72 +23,43 @@
 #define __MAIN_H
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#ifdef _UNITY_
-#define UNITY_TEST
-#elif F0
-#include "stm32f0xx_hal.h"
-#elif F1
-#include "stm32f1xx_hal.h"
-#elif F2
-#include "stm32f2xx_hal.h"
-#elif F3
-#include "stm32f3xx_hal.h"
-#elif F4
-#include "stm32f4xx_hal.h"
-#elif F7
-#include "stm32f7xx_hal.h"
-#elif L0
-#include "stm32l0xx_hal.h"
-#elif L1
-#include "stm32l1xx_hal.h"
-#elif L4
-#include "stm32l4xx_hal.h"
-#elif G0
-#include "stm32g0xx_hal.h" 
-#else
-#error "Unsupported STM32 Family"
-#endif
+#include "stm32g0xx_hal.h"
 
-#include <string.h>
-#include <stdarg.h>
-#include <stdio.h>
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
 
-  /* Private includes ----------------------------------------------------------*/
-  /* USER CODE BEGIN Includes */
+/* USER CODE END Includes */
 
-  /* USER CODE END Includes */
+/* Exported types ------------------------------------------------------------*/
+/* USER CODE BEGIN ET */
 
-  /* Exported types ------------------------------------------------------------*/
-  /* USER CODE BEGIN ET */
+/* USER CODE END ET */
 
-  /* USER CODE END ET */
+/* Exported constants --------------------------------------------------------*/
+/* USER CODE BEGIN EC */
 
-  /* Exported constants --------------------------------------------------------*/
-  /* USER CODE BEGIN EC */
+/* USER CODE END EC */
 
-  /* USER CODE END EC */
+/* Exported macro ------------------------------------------------------------*/
+/* USER CODE BEGIN EM */
 
-  /* Exported macro ------------------------------------------------------------*/
-  /* USER CODE BEGIN EM */
+/* USER CODE END EM */
 
-  /* USER CODE END EM */
-
-  /* Exported functions prototypes ---------------------------------------------*/
-  void Error_Handler(void);
-
+/* Exported functions prototypes ---------------------------------------------*/
+void Error_Handler(void);
+void SystemClock_Config(void);
 /* USER CODE BEGIN EFP */
 
 /* USER CODE END EFP */
-#ifndef _UNITY_
+
 /* Private defines -----------------------------------------------------------*/
-#define MCO_Pin       GPIO_PIN_0
+#define MCO_Pin GPIO_PIN_0
 #define MCO_GPIO_Port GPIOF
-#define LCD_RD_Pin    GPIO_PIN_0
+#define LCD_RD_Pin GPIO_PIN_0
 #define LCD_RD_GPIO_Port GPIOA
 #define LCD_WR_Pin GPIO_PIN_1
 #define LCD_WR_GPIO_Port GPIOA
@@ -100,7 +71,7 @@ extern "C"
 #define LCD_RS_GPIO_Port GPIOA
 #define LED_GREEN_Pin GPIO_PIN_5
 #define LED_GREEN_GPIO_Port GPIOA
-//#define LED_GPIO_CLK_ENABLE()                  __HAL_RCC_GPIOA_CLK_ENABLE()
+#define LED_GREEN_GPIO_CLK_ENABLE()   __HAL_RCC_GPIOA_CLK_ENABLE()
 #define LCD_CS_Pin GPIO_PIN_1
 #define LCD_CS_GPIO_Port GPIOB
 #define LCD_RST_Pin GPIO_PIN_11
@@ -125,10 +96,10 @@ extern "C"
 #define LCD_D5_GPIO_Port GPIOB
 #define LCD_D4_Pin GPIO_PIN_5
 #define LCD_D4_GPIO_Port GPIOB
-#endif
-  /* USER CODE BEGIN Private defines */
 
-  /* USER CODE END Private defines */
+/* USER CODE BEGIN Private defines */
+
+/* USER CODE END Private defines */
 
 #ifdef __cplusplus
 }

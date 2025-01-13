@@ -11,7 +11,7 @@
                 "d:/Dokumente/Software/C_Programme/LCD_STM32/include",
                 "d:/Dokumente/Software/C_Programme/LCD_STM32/src",
                 "d:/Dokumente/Software/C_Programme/LCD_STM32/.pio/libdeps/mydebug/Unity/src",
-                "d:/Dokumente/Software/C_Programme/LCD_STM32/lib/LCD",
+                "d:/Dokumente/Software/C_Programme/LCD_STM32/lib/ILI9341",
                 "d:/Dokumente/Software/C_Programme/LCD_STM32/lib/fonts",
                 ""
             ],
@@ -21,7 +21,7 @@
                     "d:/Dokumente/Software/C_Programme/LCD_STM32/include",
                     "d:/Dokumente/Software/C_Programme/LCD_STM32/src",
                     "d:/Dokumente/Software/C_Programme/LCD_STM32/.pio/libdeps/mydebug/Unity/src",
-                    "d:/Dokumente/Software/C_Programme/LCD_STM32/lib/LCD",
+                    "d:/Dokumente/Software/C_Programme/LCD_STM32/lib/ILI9341",
                     "d:/Dokumente/Software/C_Programme/LCD_STM32/lib/fonts",
                     ""
                 ]
@@ -29,7 +29,6 @@
             "defines": [
                 "PLATFORMIO=60116",
                 "_UNITY_",
-                "G0",
                 "__PLATFORMIO_BUILD_DEBUG__",
                 ""
             ],

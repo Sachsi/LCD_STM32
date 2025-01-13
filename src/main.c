@@ -1,88 +1,115 @@
+/* USER CODE BEGIN Header */
 /**
- * @file main.c
- * @author Tobias Sachse
- * @brief 
- * @version 0.1
- * @date 2024-12-28
- * 
- * @copyright Copyright (c) 2024
- * 
- */
-#ifndef _UNITY_
+  ******************************************************************************
+  * @file           : main.c
+  * @brief          : Main program body
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2024 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
+/* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "gpio.h"
 #include "tim.h"
 #include "usart.h"
-#include <lcd.h>
-#include <ili9341_touch.h>
-#include "delay.h"
-#endif
-/* -- Prototype declaration */
-void SystemClock_Config(void);
-void Error_Handler(void);
+#include "gpio.h"
 
-SPI_HandleTypeDef hspi1;
-UART_HandleTypeDef huart2;
+/* Private includes ----------------------------------------------------------*/
+/* USER CODE BEGIN Includes */
 
-void UART_Printf(const char* fmt, ...) {
-    char buff[256];
-    va_list args;
-    va_start(args, fmt);
-    vsnprintf(buff, sizeof(buff), fmt, args);
-    HAL_UART_Transmit( &huart2, (uint8_t*)buff, strlen(buff),
-                      HAL_MAX_DELAY);
-    va_end(args);
-}
-// #define DISPLAY_OFF   0x28
-// #define DISPLAY_ON    0x29
+/* USER CODE END Includes */
 
-// void set_parallel_bits(int8_t data)
-// {
-//     int16_t temp = 0x00;
-//     HAL_GPIO_WritePin(ILI_GPIOA_DATA, (ILI_D7 | ILI_D2 | ILI_D0), GPIO_PIN_RESET);
-// 	  HAL_GPIO_WritePin(ILI_GPIOC_DATA, (ILI_D1), GPIO_PIN_RESET);
-// 	  HAL_GPIO_WritePin(ILI_GPIOB_DATA, (ILI_D3 | ILI_D4 | ILI_D5 | ILI_D6), GPIO_PIN_RESET);
-// 	  temp =  (uint16_t)(0x0000 | ((data) & (ILI_D7 | ILI_D2 | ILI_D0)));
-// 	  HAL_GPIO_WritePin(ILI_GPIOA_DATA, temp, GPIO_PIN_SET); 
-// 	  temp =  (uint16_t)(0x0000 | ((data) & (ILI_D1)));
-// 	  HAL_GPIO_WritePin(ILI_GPIOC_DATA, temp, GPIO_PIN_SET);
-// 	  temp =  (uint16_t)(0x0000 | ((data) & (ILI_D3 | ILI_D4 | ILI_D5 | ILI_D6)));
-//     HAL_GPIO_WritePin(ILI_GPIOB_DATA, temp, GPIO_PIN_SET);
-// }
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
 
-// void tft_command_write(int8_t data)
-// {
-//     ILI_DC_CMD;
-//     set_parallel_bits(data);
-// 	  ILI_WR_STROBE;
-// }
-// void tft_data_write(uint8_t data)
-// {
-//     ILI_DC_DAT;
-//     set_parallel_bits(data);
-// 	  ILI_WR_STROBE;
-// }
-#ifndef UNITY_TEST
+/* USER CODE END PTD */
+
+/* Private define ------------------------------------------------------------*/
+/* USER CODE BEGIN PD */
+
+/* USER CODE END PD */
+
+/* Private macro -------------------------------------------------------------*/
+/* USER CODE BEGIN PM */
+
+/* USER CODE END PM */
+
+/* Private variables ---------------------------------------------------------*/
+
+/* USER CODE BEGIN PV */
+
+/* USER CODE END PV */
+
+/* Private function prototypes -----------------------------------------------*/
+//void SystemClock_Config(void);
+/* USER CODE BEGIN PFP */
+
+/* USER CODE END PFP */
+
+/* Private user code ---------------------------------------------------------*/
+/* USER CODE BEGIN 0 */
+
+/* USER CODE END 0 */
+
+/**
+  * @brief  The application entry point.
+  * @retval int
+  */
 int main(void)
 {
+
+  /* USER CODE BEGIN 1 */
+
+  /* USER CODE END 1 */
+
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
-  
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
   SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   MX_TIM1_Init();
+  /* USER CODE BEGIN 2 */
 
-  delay_init(64);
-      
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  char c = 'c';
+  uint8_t* a = (uint8_t*)&c;
   while (1)
   {
-    //LCD_Init();
-    delay_us(50);
-    
-    HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
+    /* USER CODE END WHILE */
+  HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
+  HAL_Delay(500);
+  USART_Send(a, sizeof(c));
+ 
+  /* USER CODE BEGIN 3 */
   }
+  /* USER CODE END 3 */
 }
-#endif
+
 /**
   * @brief System Clock Configuration
   * @retval None
@@ -92,10 +119,12 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  /** Configure the main internal regulator output voltage 
+  /** Configure the main internal regulator output voltage
   */
   HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1);
-  /** Initializes the CPU, AHB and APB busses clocks 
+
+  /** Initializes the RCC Oscillators according to the specified parameters
+  * in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -127,6 +156,10 @@ void SystemClock_Config(void)
   }
 }
 
+/* USER CODE BEGIN 4 */
+
+/* USER CODE END 4 */
+
 /**
   * @brief  This function is executed in case of error occurrence.
   * @retval None
@@ -141,6 +174,7 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
+
 #ifdef  USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number
@@ -157,5 +191,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-
-

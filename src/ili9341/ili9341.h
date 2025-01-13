@@ -51,9 +51,9 @@
   * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
   * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
 **************************************************************************************************/		
-#ifndef __LCD_H
-#define __LCD_H		
-//#include "main.h"
+#ifndef __ILI9341_H
+#define __ILI9341_H		
+#include "main.h"
 //#include "sys.h"	 
 #include "stm32g0xx_hal.h"
 #include "stdlib.h"
@@ -86,13 +86,25 @@ extern _lcd_dev lcddev;	//����LCD��Ҫ����
 //TFTLCD������Ҫ���õĺ���		   
 extern uint16_t  POINT_COLOR;//Ĭ�Ϻ�ɫ    
 extern uint16_t  BACK_COLOR; //������ɫ.Ĭ��Ϊ��ɫ
-
 ////////////////////////////////////////////////////////////////////
 //-----------------LCD-Data and Control Pin----------- 
+enum _LCD_PIN{
+	LCD_D0 = 9,
+	LCD_D1 = 7,
+	LCD_D2 = 10,
+	LCD_D3 = 3,
+	LCD_D4 = 5,
+	LCD_D5 = 4,
+	LCD_D6 = 14,
+	LCD_D7 = 8
+} LCD_PIN;
+
 #define LCD_GPIOC_TYPE  GPIOC  //GPIOC Port
 //#define LED      	4       //
 #define LCD_DATA_1 	GPIO_PIN_7       //Pin7 PortC
-#define LCD_MASK_C (1 << 1)
+#define LCD_MASK_C (1 << 7)
+#define LCD_BIT_MASK_C (1 << 1)
+
 #define LCD_GPIOA_TYPE  GPIOA  	//GPIOA Port
 #define LCD_RS   	4       	//�Ĵ���/����ѡ������ PC8 
 #define LCD_WR   	1      	//
@@ -100,10 +112,11 @@ extern uint16_t  BACK_COLOR; //������ɫ.Ĭ��Ϊ��ɫ
 #define LCD_RS_PIN	GPIO_PIN_4
 #define LCD_WR_PIN	GPIO_PIN_1
 #define LCD_RD_PIN	GPIO_PIN_0
-#define LCD_DATA_0	GPIO_PIN_9       //
-#define LCD_DATA_2  GPIO_PIN_10      //
-#define LCD_DATA_7  GPIO_PIN_8       //
-#define LCD_MASK_A (1 << 0 | 1 << 2 | 1 << 7)
+#define LCD_DATA_0	9       //
+#define LCD_DATA_2  10      //
+#define LCD_DATA_7  8       //
+#define LCD_MASK_A (1 << LCD_DATA_0 | 1 << LCD_DATA_2 | 1 << LCD_DATA_7)
+#define LCD_BIT_MASK_A ( 1 << 0 | 1 << 2 | 1 << 7)
 
 #define LCD_GPIOB_TYPE  GPIOB  	//GPIOB Port
 #define LCD_RST  11       	//
