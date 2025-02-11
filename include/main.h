@@ -97,8 +97,27 @@ void SystemClock_Config(void);
 #define LCD_D4_Pin GPIO_PIN_5
 #define LCD_D4_GPIO_Port GPIOB
 
+enum _LCD_PIN{
+	LCD_D0 = 9,
+	LCD_D1 = 7,
+	LCD_D2 = 10,
+	LCD_D3 = 3,
+	LCD_D4 = 5,
+	LCD_D5 = 4,
+	LCD_D6 = 14,
+	LCD_D7 = 8
+} LCD_PIN;
 /* USER CODE BEGIN Private defines */
+//GPIOC Port
+#define LCD_MASK_C (1 << 7)
+#define LCD_BIT_MASK_C (1 << 1 )
 
+//GPIOA Port
+#define LCD_MASK_A (1 << 9 | 1 << 10 | 1 << 8)
+#define LCD_BIT_MASK_A ( 1 << 0 | 1 << 2 | 1 << 7)
+//GPIOB Port
+#define LCD_MASK_B (1 << 3 | 1 << 4 | 1 << 5 | 1 << 6)
+#define LCD_BIT_MASK_B (1 << 5 | 1 << 4 | 1 << 3 | 1 << 6 )
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
