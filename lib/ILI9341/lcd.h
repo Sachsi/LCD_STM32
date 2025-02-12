@@ -99,7 +99,7 @@ POSSIBILITY OF SUCH DAMAGE.
 // Uncomment to use lookup table for data output (average x2 increase in FPS, +3kB RAM)
 // FillScreen(0x051F) @ 180 MHz with lookup table    -O0: 25.5 FPS, -O2: 54.5 FPS
 // FillScreen(0x051F) @ 180 MHz without lookup table -O0: 16 FPS,   -O2: 24 FPS
-//#define USE_LOOKUP
+#define USE_LOOKUP
 
 #if !(defined(ILI9325) || defined(ILI9328) || defined(ILI9340) || defined(ILI9340_INV) \
 		|| defined(ILI9341) || defined(ILI9341_00) || defined(ILI9486) \

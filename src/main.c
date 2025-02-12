@@ -118,6 +118,7 @@ int main(void)
     LCD_FillScreen(BLACK);
     LCD_SetTextSize(3);
     LCD_SetTextColor(GREEN, BLACK);
+    LCD_Printf("Hello World");
     /* USER CODE END 2 */
 
     /* Infinite loop */
