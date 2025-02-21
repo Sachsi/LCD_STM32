@@ -120,14 +120,23 @@ int main(void)
     LCD_SetTextColor(GREEN, BLACK);
     LCD_Printf("Hello World");
     /* USER CODE END 2 */
-
+    LCD_DrawRoundRect(20, 20, 100, 40, 10, GREEN);
+    LCD_FillRoundRect(20, 65, 100, 40, 10, RED);
+    LCD_SetCursor(30, 30);
+    LCD_Printf("Button 1");
+    LCD_SetCursor(30, 75);
+    LCD_SetTextColor(WHITE, RED);
+    LCD_Printf("Button 2");
+    
     /* Infinite loop */
     /* USER CODE BEGIN WHILE */
     while (1)
     {
     /* USER CODE END WHILE */
     HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
-
+    
+    
+    
     HAL_Delay(500);
     /* USER CODE BEGIN 3 */
     }
